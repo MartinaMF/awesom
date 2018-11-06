@@ -76,6 +76,9 @@ justify-content: center;
 align-items: center;
 background: rgba(0,0,0,.5);
 }
+header nav .aw-nav-toggle{
+  display:none;
+}
 h1,h2,h3,h4,h5,h6{
   font-weight: normal;
 }
@@ -197,6 +200,7 @@ background: rgba(0, 0, 0, 0.9);
   width: 30px;
 height: 30px;
 position: absolute;
+cursor: pointer;
 top: 20px;
 right: 20px;
 color: #fff;
@@ -371,4 +375,73 @@ footer .aw-logo{
       100%{
         opacity:.3;
       }
+}
+/*responsive*/
+@media all and (max-width: 1020px){
+
+  .aw-container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+}
+@media all and (max-width :820px){
+  h1{
+      font-size: 50px;
+  }
+  .aw-head-text.aw-arrow,
+  .aw-testimonials .aw-arrow {
+    padding: 15px;
+}
+.aw-testimonials .aw-arrow-left {
+    right: 100%;
+  }
+  .aw-testimonials .aw-arrow-right {
+      left: 100%;
+    }
+}
+@media all and (max-width:680px){
+  header nav{
+    position: absolute;
+  }
+  header nav .aw-nav-fixed{
+    background: none;
+  }
+  ul.aw-navigation{
+    list-style-type: none;
+    background: rgba(0,0,0,.7);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    max-height: 0;
+    -webkit-transition :max-height 1.3s ease;
+    transition : max-height 1.3s ease;
+  }
+  ul.aw-navigation.aw-navigation-opened{
+    max-height: 500px;
+    -webkit-transition :max-height 1.3s ease;
+    transition : max-height 1.3s ease;
+  }
+  ul.aw-navigation li{
+    padding:0 15px;
+    border-bottom: 1px solid #ccc;
+  }
+  ul.aw-navigation li a{
+    display:block;
+    color: #fff;
+    padding: 10px 0;
+  }
+  ul.aw-navigation li:first-child a{
+    papping-top:20px;
+  }
+  ul.aw-navigation li:last-child a{
+    padding-bottom: 20px;
+    border-bottom: none;
+  }
+  header nav .aw-nav-toggle{
+    display:block;
+    color:#fff;
+    cursor: pointer;
+  }
+
 }

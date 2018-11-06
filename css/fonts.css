@@ -24,6 +24,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-menu:before {
+  content: "\e900";
+}
 .icon-glass:before {
   content: "\e9a0";
 }

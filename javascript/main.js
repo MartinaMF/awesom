@@ -24,7 +24,7 @@ const onNavItemClick = () => {
 const scrollTopSection = sectionId => {
   let sectionPosition , sectionOffset;
   const navigationHeight = document.querySelector("header nav").offsetHeight;
-  const pageWidth = windo.innerWidth;
+  const pageWidth = window.innerWidth;
   if(sectionId !== "#"){
     sectionOffset = document.querySelector(sectionId).offsetTop;
     sectionPosition = pageWidth > mobileWidth ? sectionOffset - navigationHeight : sectionOffset;
@@ -54,10 +54,42 @@ const galleryImageOpen = image =>{
   const openedImage = `<div class='aw-backdrop'><img src='${imageSrc}' alt=''/>
                       <span class='aw-backdrop-close'>X</span></div>`;
   document.body.insertAdjacentHTML("beforeend",openedImage);
+  galleryImageClose();
+}
+const galleryImageClose = ()=>{
+  const closeButton = document.querySelector(".aw-backdrop-close");
+  closeButton.addEventListener("click", ()=>{
+    const openedImage = document.querySelector(".aw-backdrop");
+    openedImage.remove();
+  });
+}
+const reorderResponsiveMenu = ()=>{
+  const pageWidth = window.innerWidth;
+  const navigation = document.querySelector("header nav .aw-navigation");
+  const navContainer = document.querySelector("header nav .aw-container")
+  const navigationBody = document.querySelector("body >.aw-navigation");
+  if(pageWidth <= mobileWidth && navigation){
+    document.body.insertAdjacentElement("afterbegin",navigation);
+  }
+  else if(pageWidth > mobileWidth && navigationBody){
+    navContainer.insertAdjacentElement("beforeend" ,navigationBody);
+  }
+}
+const mobileMenueToggle = () =>{
+  const menueToggle = document.querySelector(".aw-nav-toggle");
+  menueToggle.addEventListener("click", () =>{
+  const mobileNavigation = document.querySelector("body >.aw-navigation");
+  mobileNavigation.classList.toggle("aw-navigation-opened");
+  });
 }
 window.addEventListener("scroll", () =>{
   addMenuBackground();
 });
+window.addEventListener("resize", () =>{
+  reorderResponsiveMenu();
+});
 
+reorderResponsiveMenu();
+mobileMenueToggle();
 onGalleryImageClick();
 onNavItemClick();
